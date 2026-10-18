@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: reddit-clone
+  datasource:
+    url: jdbc:postgresql://localhost:5432/redditclone
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:replace-this-with-a-long-random-base64-secret-in-production-please}
+    expiration-ms: 86400000 # 24h
+  cors:
+    allowed-origins: "http://localhost:5173"
